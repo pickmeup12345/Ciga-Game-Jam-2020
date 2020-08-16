@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using CjGameDevFrame.Common;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public enum GameEvent
 {
@@ -16,6 +18,9 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
     public Transform StartBtnTrans;
     public AudioSource BgmSource;
     public AudioClip MainBgm;
+    public Animator NewDayAnim;
+    public Text NewDayText;
+    public float AnimSpeed;
     
     public CardContainer CardContainer { get; private set; }
     public List<BaseProperty> AllProperty { get; private set; }
@@ -85,6 +90,7 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         StartBtnTrans.DOScale(0.93f, 1.5f)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
+        NewDayAnim.speed = AnimSpeed;
     }
 
     void Update()
@@ -170,7 +176,7 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
 
     private IEnumerator DelayPassDay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.21f);
         if (_msgDict.ContainsKey(PassDays))
         {
             if (_msgDict[PassDays].Count > _msgIndex)
@@ -188,16 +194,23 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
             yield break;
         }
         
+        NewDayText.text = EndDays.Value.ToString();
+        NewDayAnim.gameObject.SetActive(true);
+        NewDayAnim.Play("NewDay" + Random.Range(0, 2));
+        yield return new WaitForSeconds(0.3f / AnimSpeed);
+
         EndDay();
         if (IsGameOver) yield break;
-        Tips.ShowTips("一天结束了\n心情减少\n饱食减少");
+        yield return new WaitForSeconds(0.18f / AnimSpeed);
 
-        yield return new WaitForSeconds(1f);
         if (PassDays > 0 && PassDays % StageAddInterval == 0)
         {
             Stage++;
             CardContainer.Shuffle(Stage);
         } 
         NewDay();
+        
+        yield return new WaitForSeconds(1f);
+        NewDayAnim.gameObject.SetActive(false);
     }
 } 
