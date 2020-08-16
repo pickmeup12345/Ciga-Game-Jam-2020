@@ -41,7 +41,7 @@ public class MoneyProperty : BaseProperty, IEventListener<GameEvent>
         //     if (GameMgr.Instance.PassDays >= SupplyInterval && GameMgr.Instance.PassDays % SupplyInterval == 0)
         //     {
         //         Value += SupplyCount;
-        //         GameMgr.Instance.Tips.ShowTips("政府补给到了");
+        //         GameMgr.Instance.Tips.ShowTips("联盟补给到了");
         //     }
         // }
     }

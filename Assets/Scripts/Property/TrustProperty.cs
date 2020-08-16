@@ -31,12 +31,12 @@ public class TrustProperty : BaseProperty
     {
         if (Value <= 0)
         {
-            GameMgr.Instance.GameOver(true, "你违抗政府，被关进监狱了");
+            GameMgr.Instance.GameOver(true, "你违抗联盟，被关进监狱了");
         }
 
         if (Value >= MaxValue)
         {
-            GameMgr.Instance.GameOver(true, "政府控制了一切，你自杀了");
+            GameMgr.Instance.GameOver(true, "平民怀疑你成为了联盟的走狗，将你杀死了");
         }
     }
 }
