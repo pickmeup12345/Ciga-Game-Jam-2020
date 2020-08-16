@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e14a72067f1ad408ec8d661bc560ce, type: 3}
+  m_Name: CardConfig-CardConfig-Importer
+  m_EditorClassIdentifier: 
+  templatePath: Plugins/QuickSheet/ExcelPlugin/Templates
+  scriptFilePath: Config/Data/Runtime
+  editorScriptFilePath: Config/Data/Editor
+  sheetName: CardConfig.xlsx
+  workSheetName: CardConfig
+  columnHeaderList:
+  - type: 3
+    name: Id
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: DesText
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: YesText
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: NoText
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: IconName
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: YesTrust
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: YesMood
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: YesMoney
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: YesSatiety
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: YesEndDays
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: NoTrust
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: NoMood
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: NoMoney
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: NoSatiety
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: NoEndDays
+    isEnable: 0
+    isArray: 0
+  - type: 3
+    name: Weight
+    isEnable: 0
+    isArray: 1
+  - type: 3
+    name: Stage
+    isEnable: 0
+    isArray: 1
+  excelFilePath: Assets/Config/Excel/CardConfig.xlsx
+  SheetNames:
+  - CardConfig
+  currentSelectedSheet: 0
