@@ -67,9 +67,11 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         _msgDict = new Dictionary<int, List<string>>();
         _msgDict.Add(0, new List<string>
         {
-            "2333年，突如其来的蚂蚁病毒袭击了这座城市，人们不得不相互隔离以防传染。康涅狄格州的斯嘉丽是一个独居的18岁平民女孩，她的日常就是通过支持或反对一些事件使自己在蚁毒中存活。",
-            "你需要注意自己的四项数值来保持自身属性的平衡。G代表政府信任度，E代表饱食度，M代表心情，R代表金钱，过高或过低都会导致游戏结束。",
-            "你需要在蚁毒中存活30天，祝你成功。"
+            "2333年，突如其来的蚂蚁病毒袭击了这个联盟管辖的城市，人们不得不相互隔离以防传染。斯嘉丽是该市一个独居的18岁平民女孩，她需要通过支持或反对一些事件使自己在蚁毒中存活。",
+            "你拥有四个属性，分别是联盟信任度，心情，金钱和饱食度。其中心情和饱食度每日会自动减少。任意属性为0或联盟信任度达到100时，你便会死亡。",
+            "请注意：联盟信任度过高会使你被平民孤立，信任度过低会使你被联盟制裁，饱食度过高会使你不舒服，这些都会使你每日的心情消耗增加。",
+            "通过上下滑动箱子来表明你对事件的立场，你的态度将影响你的属性。",
+            "你需要在蚁毒中存活30天直到疫苗的开发结束，祝你成功。"
         });
         _msgDict.Add(10, new List<string>
         {
@@ -129,7 +131,7 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         _isShowCard = false;
         if (PassDays >= 5 && PassDays % 5 == 0)
         {
-            CardContainer.ShowMsgCard("政府补给到了!", new CardConfigData{Yesmoney = 5, Nomoney = 5});
+            CardContainer.ShowMsgCard("联盟的固定补给终于心不甘情不愿地发下来了", new CardConfigData{Yesmoney = 5, Nomoney = 5});
         }
         else if (_msgDict.ContainsKey(PassDays) && _msgDict[PassDays].Count > _msgIndex)
         {
