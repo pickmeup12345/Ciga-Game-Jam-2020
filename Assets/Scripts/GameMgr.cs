@@ -12,6 +12,8 @@ public enum GameEvent
 public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
 {
     public int StageAddInterval;
+    public AudioSource BgmSource;
+    public AudioClip MainBgm;
     
     public CardContainer CardContainer { get; private set; }
     public List<BaseProperty> AllProperty { get; private set; }
@@ -58,7 +60,8 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
 
         Tips = FindObjectOfType<TipsContainer>();
         GameOverPanel = FindObjectOfType<GameOverPanel>();
-        
+        GameOverPanel.Hide();
+
         _msgDict = new Dictionary<int, List<string>>();
         _msgDict.Add(0, new List<string>
         {
@@ -68,14 +71,12 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         });
         _msgDict.Add(10, new List<string>
         {
-            "蚁毒升级"
+            "由于前期防控缺位，蚁毒在距疫苗研制成功的20天时发生了突变，传染力升级，您的属性变化将会加大，请谨慎做出选择。"
         });
         _msgDict.Add(20, new List<string>
         {
-            "蚁毒升级"
+            "距离疫苗研制成功仅剩10天，蚁毒正在做最后的反扑，您的属性变化将会进一步加大，请谨慎做出选择。"
         });
-        
-        RestartGame();
     }
 
     void Update()
@@ -89,6 +90,7 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
     public void RestartGame()
     {
         Debug.Log("RestartGame");
+        PlayBgm(MainBgm);
         Stage = 1;
         PassDays = 0;
         _msgIndex = 0;
@@ -110,7 +112,7 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         Debug.Log($"GameOver!! failed = {failed}, {des}");
         IsGameOver = true;
         EventManager.TriggerEvent(GameEvent.GameOver);
-        GameOverPanel.Show(failed ? "失败！" : "成功！", des);
+        GameOverPanel.Show(failed, des);
     }
 
     public void NewDay(bool isFirstDay = false)
@@ -142,6 +144,12 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         _msgIndex = 0;
         Debug.Log("EndDay");
         EventManager.TriggerEvent(GameEvent.EndDay);
+    }
+
+    public void PlayBgm(AudioClip clip)
+    {
+        BgmSource.clip = clip;
+        BgmSource.Play();
     }
 
     public void OnEvent(CardEvent e)
@@ -177,13 +185,11 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         Tips.ShowTips("一天结束了\n心情减少\n饱食减少");
 
         yield return new WaitForSeconds(1f);
-        // Tips.ShowTips("新的一天开始了");
         if (PassDays > 0 && PassDays % StageAddInterval == 0)
         {
             Stage++;
             CardContainer.Shuffle(Stage);
         } 
-        // yield return new WaitForSeconds(0.3f);
         NewDay();
     }
 } 

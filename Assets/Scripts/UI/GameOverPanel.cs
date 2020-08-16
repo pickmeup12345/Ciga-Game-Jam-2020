@@ -7,10 +7,14 @@ public class GameOverPanel : MonoBehaviour
 {
     public Text TitleText;
     public Text DesText;
+    public GameObject FaildObj;
+    public GameObject SuccessObj;
 
-    public void Show(string title, string des)
+    public void Show(bool isFailed, string des)
     {
-        TitleText.text = title;
+        TitleText.text = isFailed ? "游戏失败！" : "游戏胜利！";
+        FaildObj.SetActive(isFailed);
+        SuccessObj.SetActive(!isFailed);
         DesText.text = des;
         gameObject.SetActive(true);
     }

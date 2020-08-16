@@ -25,6 +25,7 @@ public class CardSlider : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
             _configData = value;
             if (!string.IsNullOrEmpty(_configData.Iconname))
             {
+                Debug.Log(_configData.Iconname + ".png");
                 IconImg.sprite = Resources.Load<Sprite>(_configData.Iconname);
             }
         }
