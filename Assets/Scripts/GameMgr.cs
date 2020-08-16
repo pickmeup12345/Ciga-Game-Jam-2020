@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CjGameDevFrame.Common;
+using DG.Tweening;
 using UnityEngine;
 
 public enum GameEvent
@@ -12,6 +13,7 @@ public enum GameEvent
 public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
 {
     public int StageAddInterval;
+    public Transform StartBtnTrans;
     public AudioSource BgmSource;
     public AudioClip MainBgm;
     
@@ -77,6 +79,10 @@ public class GameMgr : MonoSingleton<GameMgr>, IEventListener<CardEvent>
         {
             "距离疫苗研制成功仅剩10天，蚁毒正在做最后的反扑，您的属性变化将会进一步加大，请谨慎做出选择。"
         });
+
+        StartBtnTrans.DOScale(0.93f, 1.5f)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(-1, LoopType.Yoyo);
     }
 
     void Update()

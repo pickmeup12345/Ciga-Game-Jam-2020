@@ -65,8 +65,6 @@ public class CardContainer : MonoBehaviour, IEventListener<CardEvent>
         _curCard.transform.localPosition = Vector3.zero;
         _curCard.ConfigData = GetNextCard();
         Debug.Log("ShowNextCard " + _curCard.ConfigData.Id);
-
-        _remainCards.RemoveAt(0);
         CardEvent.Send(CardResolvePhase.Prepare, CardResult.Yes, _curCard.ConfigData);
     }
 

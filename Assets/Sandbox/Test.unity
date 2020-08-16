@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageAddInterval: 10
+  StartBtnTrans: {fileID: 333874624}
   BgmSource: {fileID: 1082992627}
   MainBgm: {fileID: 8300000, guid: 00b88c30251224649820d605474be30e, type: 3}
 --- !u!114 &263186139 stripped
@@ -353,6 +354,8 @@ MonoBehaviour:
   DesText: {fileID: 552349675}
   FaildObj: {fileID: 1156832153}
   SuccessObj: {fileID: 718455653}
+  PassClip: {fileID: 8300000, guid: 8a8ac9ac1e9a55c4ea3bc7be6c3acda6, type: 3}
+  FailedClip: {fileID: 8300000, guid: a4eae9bde2da8e64e91ffe4756cce5f2, type: 3}
 --- !u!114 &303703896
 MonoBehaviour:
   m_ObjectHideFlags: 0

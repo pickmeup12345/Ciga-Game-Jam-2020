@@ -12,6 +12,9 @@ public class CardSlider : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public float ResolvedDist;
     public float BackTime;
     public bool YesIsNegativeDir;
+    public AudioClip YesClip;
+    public AudioClip NoClip;
+    public AudioClip DragClip;
     
     public Image IconImg;
     public Text MsgText;
@@ -54,6 +57,7 @@ public class CardSlider : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         _lastDragPos = eventData.position;
         _dragSpeed = 0;
         DOTween.Kill(transform);
+        AudioSource.PlayClipAtPoint(DragClip, Vector3.zero);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -99,6 +103,8 @@ public class CardSlider : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public void Confirm(CardResult result)
     {
         if (IsConfirmed) return;
+        var clip = result == CardResult.Yes ? YesClip : NoClip;
+        if (clip != null) AudioSource.PlayClipAtPoint(clip, Vector3.zero);
         CardEvent.Send(CardResolvePhase.Preview, result, null);
         Debug.Log($"Confirmed {result} {ConfigData.Id} {ConfigData.Destext}");
         IsConfirmed = true;

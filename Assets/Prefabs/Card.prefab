@@ -56,6 +56,9 @@ MonoBehaviour:
   ResolvedDist: 500
   BackTime: 0.2
   YesIsNegativeDir: 0
+  YesClip: {fileID: 8300000, guid: 56682008ccf724544b740b6fb31e1f4e, type: 3}
+  NoClip: {fileID: 8300000, guid: 23d00907e6e9307439b931a1ab69df1a, type: 3}
+  DragClip: {fileID: 8300000, guid: 5fddfaf01360e7346b76a4dc869f3c97, type: 3}
   IconImg: {fileID: 1044717844900529246}
   MsgText: {fileID: 0}
 --- !u!225 &1044717844423045583

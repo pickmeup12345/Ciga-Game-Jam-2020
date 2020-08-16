@@ -333,6 +333,21 @@ PrefabInstance:
       propertyPath: MsgText
       value: 
       objectReference: {fileID: 3585647985480210611}
+    - target: {fileID: 1044717844423045582, guid: 554f11033fb6cf844afb5d35a265b910,
+        type: 3}
+      propertyPath: YesClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044717844423045582, guid: 554f11033fb6cf844afb5d35a265b910,
+        type: 3}
+      propertyPath: NoClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044717844423045582, guid: 554f11033fb6cf844afb5d35a265b910,
+        type: 3}
+      propertyPath: DragClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a862a53c9bd11dd4c8567bd570408db0, type: 3}
     - target: {fileID: 1044717844900529240, guid: 554f11033fb6cf844afb5d35a265b910,
         type: 3}
       propertyPath: m_IsActive
