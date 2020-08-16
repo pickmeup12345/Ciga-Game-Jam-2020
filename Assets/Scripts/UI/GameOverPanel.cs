@@ -11,7 +11,9 @@ public class GameOverPanel : MonoBehaviour
     public GameObject SuccessObj;
     public AudioClip PassClip;
     public AudioClip FailedClip;
-
+    public Color FailedColor;
+    public Color PassColor;
+    
     public void Show(bool isFailed, string des)
     {
         if (!isFailed)
@@ -22,7 +24,9 @@ public class GameOverPanel : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(FailedClip, Vector3.zero);
         }
-        TitleText.text = isFailed ? "游戏失败！" : "游戏胜利！";
+        TitleText.text = isFailed ? "失败！" : "胜利！";
+        TitleText.color = isFailed ? FailedColor : PassColor;
+        DesText.color = isFailed ? FailedColor : PassColor;
         FaildObj.SetActive(isFailed);
         SuccessObj.SetActive(!isFailed);
         DesText.text = des;
